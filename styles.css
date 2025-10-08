@@ -6,6 +6,11 @@ body {
     height: 100vh;
 }
 
+.operator {
+    background-color: rgb(255, 204, 0);
+    color: black;
+}
+
 button {
     display: flex;
     justify-content: center;
@@ -45,7 +50,7 @@ button {
     background-color: rgb(255, 255, 255);
 }
 
-#numbers {
+#buttons {
     background-color: rgb(110, 111, 112);
     display: flex;
     flex-wrap: wrap;
