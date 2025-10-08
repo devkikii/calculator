@@ -25,3 +25,5 @@ function operate (operator, a , b) {
         return divide (a, b)
     } else return ("Invalid Operator")
 }
+
+console.log(operate("*", 14, 2))
