@@ -77,6 +77,17 @@ function setupCalculator() {
         isSecondNumber = false;
         display.textContent = "";
       }
+      else if (btn.id === "clear") {
+  // Delete last character from display
+  display.textContent = display.textContent.slice(0, -1);
+
+  // Also remove last digit from the active number
+  if (isSecondNumber === false) {
+    firstNumber = firstNumber.slice(0, -1);
+  } else {
+    secondNumber = secondNumber.slice(0, -1);
+  }
+      }
     });
   });
 }
