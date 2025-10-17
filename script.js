@@ -35,7 +35,8 @@ function setupCalculator() {
   buttons.forEach((btn) => {
     btn.addEventListener("click", () => {
       // Number button clicked
-      if (!isNaN(btn.textContent) || btn.textContent === ".") {
+      if (!isNaN(btn.textContent)) {
+        if (display.textContent.length >= 10) return;
         if (!isSecondNumber) {
           firstNumber += btn.textContent;
           display.textContent = firstNumber;
@@ -68,7 +69,7 @@ function setupCalculator() {
         }
       }
 
-      // Clear clicked
+      // All clear
       else if (btn.id === "all-clear") {
         firstNumber = "";
         secondNumber = "";
@@ -77,16 +78,30 @@ function setupCalculator() {
         isSecondNumber = false;
         display.textContent = "";
       }
-      else if (btn.id === "clear") {
-  // Delete last character from display
-  display.textContent = display.textContent.slice(0, -1);
 
-  // Also remove last digit from the active number
-  if (isSecondNumber === false) {
-    firstNumber = firstNumber.slice(0, -1);
-  } else {
-    secondNumber = secondNumber.slice(0, -1);
-  }
+      // Clear last digit
+      else if (btn.id === "clear") {
+        display.textContent = display.textContent.slice(0, -1);
+        if (!isSecondNumber) {
+          firstNumber = firstNumber.slice(0, -1);
+        } else {
+          secondNumber = secondNumber.slice(0, -1);
+        }
+      }
+
+      // Decimal point (fixed version)
+      else if (btn.id === "decimal") {
+        if (!isSecondNumber) {
+          if (!firstNumber.includes(".")) {
+            firstNumber += ".";
+            display.textContent += ".";
+          }
+        } else {
+          if (!secondNumber.includes(".")) {
+            secondNumber += ".";
+            display.textContent += ".";
+          }
+        }
       }
     });
   });
