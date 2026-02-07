@@ -33,7 +33,7 @@ function operate(operator, a, b) {
 
 function setupCalculator() {
   buttons.forEach((btn) => {
-    btn.addEventListener("keydown", () => {
+    btn.addEventListener("click", () => {
       // Number button clicked
       if (!isNaN(btn.textContent)) {
         if (display.textContent.length >= 10) return;
